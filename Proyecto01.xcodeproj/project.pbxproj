@@ -17,6 +17,7 @@
 		CF10B12628BC63D0006A42D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10B0FC28BC63CD006A42D3 /* ContentView.swift */; };
 		CF10B12728BC63D0006A42D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF10B0FD28BC63D0006A42D3 /* Assets.xcassets */; };
 		CF10B12828BC63D0006A42D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF10B0FD28BC63D0006A42D3 /* Assets.xcassets */; };
+		CF10B13828BC680C006A42D3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CF10B13728BC680C006A42D3 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		CF10B11B28BC63D0006A42D3 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF10B11F28BC63D0006A42D3 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		CF10B12128BC63D0006A42D3 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		CF10B13728BC680C006A42D3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		CF10B0F528BC63CD006A42D3 = {
 			isa = PBXGroup;
 			children = (
+				CF10B13728BC680C006A42D3 /* README.md */,
 				CF10B0FA28BC63CD006A42D3 /* Shared */,
 				CF10B10928BC63D0006A42D3 /* macOS */,
 				CF10B11228BC63D0006A42D3 /* Tests iOS */,
@@ -266,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF10B13828BC680C006A42D3 /* README.md in Resources */,
 				CF10B12728BC63D0006A42D3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +534,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -558,6 +563,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

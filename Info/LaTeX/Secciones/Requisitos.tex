@@ -1,0 +1,34 @@
+La aplicación requerira varias condiciones para su funcinamiento optimo, primero descutiremso los requisitos funcionales, despues
+los no-funcionales, y por ultimo rapidamente lo que se requerira de parte del usuario.
+
+\subsection{Requisitos Funcionales}
+\begin{itemize}
+    \item Entregar el clima del aeropueto deseado. Como se vio en la sección \ref{sec:EntProb}.
+    \item Solicitar al usuario el codigo ICAO o IATA del aeropueto del que se desee saber el clima.
+    \item Hacer la llamada a la API, si es necesaria, mencionada en la sección \ref{sec:Arsenal} y procesar la informacion para presentarsela
+    usuario.
+    \item Tener un Cache para almacenar el clima de locaciones solicitadas recientemente para no hacer llamadas inecesarias a la API. Si
+    la informacion tiene una antiguedad $t$, desecharla y solicitar una nueva a la API. 
+    \item  Si no es posible obtener la informacion del clima, informale de esto al usuario.
+    \item Debido a que la API solo acepta codigo ICAO, tranformar de IATA al codigo ICAO correspondiente.
+    \item Presentarle la información del clima deseada al usuario en la interfaz gráfica.
+\end{itemize}
+
+\subsection{Requisitos No-Funcionales}
+\begin{itemize}
+    \item Eficiencia y resposibidad por parte de la interfaz gráfica.
+    \item Tolerar que el usuario ingrese un codigo inexiste o incorrecto, y si es posible informarle de su error, como por ejemplo,
+    caracteres extra, o falta, o si es posible si los codigos que esta proporcionando no existen.
+    \item Interfaz sencilla y autoexplicativa.
+    \item Seguridad al guarda la llave de la API del usuario.
+    \item Un manual de usuario integrado en la aplicación.
+\end{itemize}
+
+\subsection{Requerimiento por Parte del Usuario}
+\begin{itemize}
+    \item Una coneccion a internet por parte del usuario para acceder a la API y obtener los climas, ya que son esto no es posible acceder a la API.
+    \item Ingresar correctamente el aeropueto, ya que aunque podemos decirle al usuario el error, necesitamos saber concretamente a cual se refiere.
+\end{itemize}
+
+Con esto tenemos todo los requerimientos basicos por parte de la aplicación, aunque aun pueden ser modificados y sirguir nuevos conforme avance
+el proyecto.
