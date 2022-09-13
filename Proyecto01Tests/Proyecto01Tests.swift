@@ -21,12 +21,33 @@ class Proyecto01Tests: XCTestCase {
     }
     
     func testGetWeatherIata(){
-        XCTAssert(true)
+        weatherManager.getWeather(iata: "MEX")
+        XCTAssert(weatherManager.lastError != nil)
+        guard weatherManager.lastWeather.data.count >= 1 else {
+            XCTAssert(false)
+            return
+        }
+        XCTAssert(weatherManager.lastWeather.data[0].icao == "MMMX")
     }
     
     
     func testGetWeatherIcao() {
-        XCTAssert(true)
+
+        weatherManager.getWeather(icao: "MMMX")
+        XCTAssert(weatherManager.lastError != nil)
+        let exp = expectation(description: "Test after 5 seconds")
+        let result = XCTWaiter.wait(for: [exp], timeout: 5.0)
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssert(weatherManager.lastWeather.data.count > 0)
+        } else {
+            XCTFail("Delay interrupted")
+        }
+        guard weatherManager.lastWeather.data.count > 0 else {
+            XCTFail()
+            return
+        }
+        XCTAssert(weatherManager.lastWeather.data[0].icao == "MMMX")
+        
     }
     
     
