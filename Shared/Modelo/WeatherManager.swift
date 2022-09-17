@@ -10,7 +10,7 @@ import RealmSwift
 
 
 class WeatherManager : ObservableObject {
-    private var AirportWeather : [String : WeatherResponse] = [:]
+    private var AirportWeatherCache : [String : (WeatherResponse, Date)] = [:]
      
     var APIkey : String?
     
@@ -18,6 +18,7 @@ class WeatherManager : ObservableObject {
     @Published var lastResponse : URLResponse? = nil
     @Published var lastError : String? = nil
     @Published var isLoading  = false
+    @Published var fromCache = false
     
    
     
@@ -73,9 +74,24 @@ class WeatherManager : ObservableObject {
             lastError = WeatherManagerException.InvalidIcaoLenght.localizedDescription
             return
         }
-        if let cacheWeather = AirportWeather[icao] {
-            //TODO if weather too old
-            lastWeather = cacheWeather
+        if let cacheWeather = AirportWeatherCache[icao] {
+            
+            let minutesOfWeatherAntiquityThreshold = 10
+            
+            print("Checking time")
+            if cacheWeather.1.timeIntervalSinceNow < Double(-60 * minutesOfWeatherAntiquityThreshold) {
+                print("Weather too old")
+                guard APIkey != nil else {
+                    lastError = WeatherManagerException.NoAPIkey.localizedDescription
+                    return
+                }
+                fetchWeather(icao: icao)
+                return
+            }
+            
+            fromCache = true
+            print("From  cache")
+            lastWeather = cacheWeather.0
             return
         }
         guard APIkey != nil else {
@@ -83,6 +99,7 @@ class WeatherManager : ObservableObject {
             return
         }
         fetchWeather(icao: icao)
+        
     }
     
     
@@ -91,6 +108,7 @@ class WeatherManager : ObservableObject {
     func fetchWeather(icao : String) {
         isLoading = true
         lastError = nil
+        fromCache = false
         
         
         guard let APIkey = APIkey, APIkey != "" else {
@@ -141,6 +159,7 @@ class WeatherManager : ObservableObject {
                     
                     DispatchQueue.main.async {
                         self.lastWeather = result
+                        self.AirportWeatherCache[icao] = (self.lastWeather, Date())
                     }
                     
                     
