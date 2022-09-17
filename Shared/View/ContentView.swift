@@ -57,7 +57,7 @@ struct ContentView: View {
                 } else if weatherManager.lastError != nil {
                     ErrorView(erroObject: weatherManager )
                 } else {
-                    WeatherView(weather: weatherManager.lastWeather)
+                    WeatherView(weather: weatherManager.lastWeather, fromCache: weatherManager.fromCache)
                 }
                 
                 Spacer()

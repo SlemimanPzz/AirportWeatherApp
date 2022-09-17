@@ -9,14 +9,18 @@ import SwiftUI
 
 struct WeatherView: View {
     var weather : WeatherResponse
+    //To be remove, just for debbing
+    
+    var fromCache : Bool
     
     var body: some View {
         if(weather.data.count != 0){
             VStack {
                 
-                Text("Clima en \(weather.data[0].station.name)")
+                Text("Weather in  \(weather.data[0].station.name)")
                     .multilineTextAlignment(.center)
                     .padding()
+                Text("From chache: \(fromCache.description)")
                 
                 HStack{
                     Spacer()
@@ -59,6 +63,6 @@ struct WeatherView_Previews: PreviewProvider {
                     station: Station(name: "Prueba")
                 )
             ]
-        ))
+        ), fromCache: true)
     }
 }
