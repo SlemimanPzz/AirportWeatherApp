@@ -8,25 +8,49 @@
 import SwiftUI
 
 
+/// Code picker for the user to select to make the weather requests.
 enum CodePicker : String, CaseIterable{
+    
+    /// `IATA` code.
     case IATA
+    
+    /// `ICAO` code.
     case ICAO
 }
 
 
+
+/// Principal view of the App, here the user insert their API key, and the Airport code to make the request with.
 struct ContentView: View {
+    /// Main ``WeatherManager`` that will be used.
     @StateObject var weatherManager = WeatherManager()
-    @State var codigoSolicitud =  ""
-    @State var featchFallido = false
+    
+    /// Request code,  `ICAO` or `IATA`, from which a request will be made.
+    @State var requestCode =  ""
+    
+    /// API key used for user input.
     @State var APIkeyField = ""
+    
+    /// API key that will be pass to ``weatherManager``
     @State var APIkey = ""
+    
+    /// The type of code the request will be made.
     @State var codePick = CodePicker.ICAO
     
+    /// Body of the view.
     var body: some View {
         ZStack{
+           
+            if #available(iOS 15, *){
+                if(ProcessInfo.processInfo.isiOSAppOnMac){
+    
+                } else{
+                LinearGradient(gradient: Gradient(colors: [.blue,.yellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .edgesIgnoringSafeArea(.all)
+                }
+            }
             
-            LinearGradient(gradient: Gradient(colors: [.blue,.yellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
+            
             VStack {
                 Text("Airport Weather")
                     .font(.largeTitle)
@@ -35,7 +59,7 @@ struct ContentView: View {
                     .padding()
 
                 Text("Insert the airport code").bold().font(.headline)
-                TextField(codePick.rawValue, text: $codigoSolicitud, prompt: Text(codePick.rawValue))
+                TextField(codePick.rawValue, text: $requestCode, prompt: Text(codePick.rawValue))
                     .disableAutocorrection(true)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
@@ -57,7 +81,7 @@ struct ContentView: View {
                 } else if weatherManager.lastError != nil {
                     ErrorView(erroObject: weatherManager )
                 } else {
-                    WeatherView(weather: weatherManager.lastWeather, fromCache: weatherManager.fromCache)
+                    WeatherView(weather: weatherManager.lastWeather)
                 }
                 
                 Spacer()
@@ -80,12 +104,10 @@ struct ContentView: View {
                     Button {
                         weatherManager.APIkey = APIkey
                         if(codePick == CodePicker.ICAO){
-                            weatherManager.getWeather(icao: codigoSolicitud.description)
+                            weatherManager.getWeather(icao: requestCode.description.capitalized)
                         } else {
-                            weatherManager.getWeather(iata: codigoSolicitud.description)
+                            weatherManager.getWeather(iata: requestCode.description.capitalized)
                         }
-                        
-                        print(codigoSolicitud)
                         
                     } label: {
                         Text("Get Weather")
@@ -98,9 +120,8 @@ struct ContentView: View {
 }
 
 
+/// Preview of ``ContentView``
 struct ContentView_Previews: PreviewProvider {
-    
-    
     static var previews: some View {
         ContentView(weatherManager: WeatherManager())
     }

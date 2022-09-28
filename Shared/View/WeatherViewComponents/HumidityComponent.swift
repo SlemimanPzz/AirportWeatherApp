@@ -7,9 +7,14 @@
 
 import SwiftUI
 
-struct HumidityComponet: View {
+
+/// View that shows the humidity. Needs a ``Humidity``, else says it couldn't get it.
+struct HumidityComponent: View {
+    
+    /// Humidity of the view.
     let humidity : Humidity?
     
+    /// Body of the view.
     var body: some View {
         if let humidity = humidity {
                 
@@ -26,8 +31,9 @@ struct HumidityComponet: View {
     }
 }
 
+/// Preview of ``HumidityComponent``.
 struct HumidityComponet_Previews: PreviewProvider {
     static var previews: some View {
-        HumidityComponet(humidity: Humidity(percent: 80))
+        HumidityComponent(humidity: Humidity(percent: 80))
     }
 }

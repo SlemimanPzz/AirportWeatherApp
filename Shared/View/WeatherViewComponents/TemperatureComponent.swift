@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+/// View that shows the temperature. Needs a ``temperature``, else says it couldn't get it.
 struct TemperatureComponent: View {
+    
+    /// Temperature of the view.
     let temperature : Temperature?
     
+    /// Body of the view.
     var body: some View{
         
         if let temperature = temperature {
@@ -27,8 +31,14 @@ struct TemperatureComponent: View {
     }
 }
 
+/// Preview of ``TemperatureComponent``.
 struct TemperatureComponent_Previews: PreviewProvider {
     static var previews: some View {
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.blue,.yellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .edgesIgnoringSafeArea(.all)
+            
         TemperatureComponent(temperature: Temperature(celsius: 50, fahrenheit: -50))
+        }
     }
 }

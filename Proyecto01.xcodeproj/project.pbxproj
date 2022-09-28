@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		CF0DA5FE28CB926F0003A3D6 /* WindComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FD28CB926F0003A3D6 /* WindComponent.swift */; };
 		CF0DA60028CB93440003A3D6 /* TemperatureComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FF28CB93440003A3D6 /* TemperatureComponent.swift */; };
-		CF0DA60228CB93EF0003A3D6 /* HumidityComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponet.swift */; };
+		CF0DA60228CB93EF0003A3D6 /* HumidityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponent.swift */; };
 		CF0DA60328CB98600003A3D6 /* WindComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FD28CB926F0003A3D6 /* WindComponent.swift */; };
 		CF0DA60428CB98760003A3D6 /* TemperatureComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FF28CB93440003A3D6 /* TemperatureComponent.swift */; };
-		CF0DA60528CB98810003A3D6 /* HumidityComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponet.swift */; };
+		CF0DA60528CB98810003A3D6 /* HumidityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponent.swift */; };
 		CF0DA60728CB9CC30003A3D6 /* CloudComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60628CB9CC30003A3D6 /* CloudComponent.swift */; };
 		CF0DA60828CB9CC30003A3D6 /* CloudComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60628CB9CC30003A3D6 /* CloudComponent.swift */; };
 		CF0DA60928CB9CC30003A3D6 /* CloudComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60628CB9CC30003A3D6 /* CloudComponent.swift */; };
@@ -51,6 +51,9 @@
 		CF5D240328D0C97100AADB44 /* WeatherManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5D23FE28D0C97100AADB44 /* WeatherManagerErrors.swift */; };
 		CF7FC6A828C8FA47009D5C2B /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC6A728C8FA47009D5C2B /* StartingView.swift */; };
 		CF7FC6A928C8FA47009D5C2B /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC6A728C8FA47009D5C2B /* StartingView.swift */; };
+		CFC8362428E37A77001306B8 /* Data.realm in Resources */ = {isa = PBXBuildFile; fileRef = CF2ABCD028D0F7EB00C5DC13 /* Data.realm */; };
+		CFC8362528E37A78001306B8 /* Data.realm in Resources */ = {isa = PBXBuildFile; fileRef = CF2ABCD028D0F7EB00C5DC13 /* Data.realm */; };
+		CFC8362628E37A78001306B8 /* Data.realm in Resources */ = {isa = PBXBuildFile; fileRef = CF2ABCD028D0F7EB00C5DC13 /* Data.realm */; };
 		CFCF209B28CF917A007427D0 /* Proyecto01App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10B0FB28BC63CD006A42D3 /* Proyecto01App.swift */; };
 		CFCF209C28CF917B007427D0 /* Proyecto01App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10B0FB28BC63CD006A42D3 /* Proyecto01App.swift */; };
 		CFCF209D28CF917B007427D0 /* Proyecto01App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10B0FB28BC63CD006A42D3 /* Proyecto01App.swift */; };
@@ -78,9 +81,9 @@
 		CFCF20B428CF9C2C007427D0 /* TemperatureComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FF28CB93440003A3D6 /* TemperatureComponent.swift */; };
 		CFCF20B628CF9C2D007427D0 /* TemperatureComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FF28CB93440003A3D6 /* TemperatureComponent.swift */; };
 		CFCF20B728CF9C2E007427D0 /* TemperatureComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FF28CB93440003A3D6 /* TemperatureComponent.swift */; };
-		CFCF20B828CF9C30007427D0 /* HumidityComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponet.swift */; };
-		CFCF20B928CF9C31007427D0 /* HumidityComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponet.swift */; };
-		CFCF20BA28CF9C31007427D0 /* HumidityComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponet.swift */; };
+		CFCF20B828CF9C30007427D0 /* HumidityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponent.swift */; };
+		CFCF20B928CF9C31007427D0 /* HumidityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponent.swift */; };
+		CFCF20BA28CF9C31007427D0 /* HumidityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponent.swift */; };
 		CFCF20BB28CF9C38007427D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF10B0FD28BC63D0006A42D3 /* Assets.xcassets */; };
 		CFCF20BC28CF9C39007427D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF10B0FD28BC63D0006A42D3 /* Assets.xcassets */; };
 		CFCF20BD28CF9C39007427D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF10B0FD28BC63D0006A42D3 /* Assets.xcassets */; };
@@ -130,7 +133,7 @@
 /* Begin PBXFileReference section */
 		CF0DA5FD28CB926F0003A3D6 /* WindComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindComponent.swift; sourceTree = "<group>"; };
 		CF0DA5FF28CB93440003A3D6 /* TemperatureComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureComponent.swift; sourceTree = "<group>"; };
-		CF0DA60128CB93EF0003A3D6 /* HumidityComponet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityComponet.swift; sourceTree = "<group>"; };
+		CF0DA60128CB93EF0003A3D6 /* HumidityComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityComponent.swift; sourceTree = "<group>"; };
 		CF0DA60628CB9CC30003A3D6 /* CloudComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudComponent.swift; sourceTree = "<group>"; };
 		CF10B0FB28BC63CD006A42D3 /* Proyecto01App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proyecto01App.swift; sourceTree = "<group>"; };
 		CF10B0FC28BC63CD006A42D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -210,7 +213,7 @@
 			children = (
 				CF0DA5FD28CB926F0003A3D6 /* WindComponent.swift */,
 				CF0DA5FF28CB93440003A3D6 /* TemperatureComponent.swift */,
-				CF0DA60128CB93EF0003A3D6 /* HumidityComponet.swift */,
+				CF0DA60128CB93EF0003A3D6 /* HumidityComponent.swift */,
 				CF0DA60628CB9CC30003A3D6 /* CloudComponent.swift */,
 			);
 			path = WeatherViewComponents;
@@ -512,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFCF20BB28CF9C38007427D0 /* Assets.xcassets in Resources */,
+				CFC8362428E37A77001306B8 /* Data.realm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFCF20BC28CF9C39007427D0 /* Assets.xcassets in Resources */,
+				CFC8362528E37A78001306B8 /* Data.realm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFCF20BD28CF9C39007427D0 /* Assets.xcassets in Resources */,
+				CFC8362628E37A78001306B8 /* Data.realm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +554,7 @@
 				CF0DA60728CB9CC30003A3D6 /* CloudComponent.swift in Sources */,
 				CF10B12328BC63D0006A42D3 /* Proyecto01App.swift in Sources */,
 				CF0DA60028CB93440003A3D6 /* TemperatureComponent.swift in Sources */,
-				CF0DA60228CB93EF0003A3D6 /* HumidityComponet.swift in Sources */,
+				CF0DA60228CB93EF0003A3D6 /* HumidityComponent.swift in Sources */,
 				CF0DA5FE28CB926F0003A3D6 /* WindComponent.swift in Sources */,
 				CFD08AD628C7C0EA00C061B8 /* WeatherView.swift in Sources */,
 				CFD08AD328C7C0DD00C061B8 /* IsLoadingView.swift in Sources */,
@@ -569,7 +575,7 @@
 				CF0DA60828CB9CC30003A3D6 /* CloudComponent.swift in Sources */,
 				CF10B12428BC63D0006A42D3 /* Proyecto01App.swift in Sources */,
 				CF0DA60428CB98760003A3D6 /* TemperatureComponent.swift in Sources */,
-				CF0DA60528CB98810003A3D6 /* HumidityComponet.swift in Sources */,
+				CF0DA60528CB98810003A3D6 /* HumidityComponent.swift in Sources */,
 				CF0DA60328CB98600003A3D6 /* WindComponent.swift in Sources */,
 				CFD08AD728C7C0EA00C061B8 /* WeatherView.swift in Sources */,
 				CFD08AD428C7C0DD00C061B8 /* IsLoadingView.swift in Sources */,
@@ -584,7 +590,7 @@
 				CFCF20AE28CF9C24007427D0 /* WeatherView.swift in Sources */,
 				CFCF209E28CF917E007427D0 /* StartingView.swift in Sources */,
 				CF2ABCC628D0F3EB00C5DC13 /* Data-model.swift in Sources */,
-				CFCF20B828CF9C30007427D0 /* HumidityComponet.swift in Sources */,
+				CFCF20B828CF9C30007427D0 /* HumidityComponent.swift in Sources */,
 				CF10B11628BC63D0006A42D3 /* Tests_iOSLaunchTests.swift in Sources */,
 				CFCF20B128CF9C28007427D0 /* WindComponent.swift in Sources */,
 				CF0DA60928CB9CC30003A3D6 /* CloudComponent.swift in Sources */,
@@ -607,7 +613,7 @@
 				CFCF20AF28CF9C25007427D0 /* WeatherView.swift in Sources */,
 				CFCF209F28CF917E007427D0 /* StartingView.swift in Sources */,
 				CF2ABCC728D0F3EB00C5DC13 /* Data-model.swift in Sources */,
-				CFCF20B928CF9C31007427D0 /* HumidityComponet.swift in Sources */,
+				CFCF20B928CF9C31007427D0 /* HumidityComponent.swift in Sources */,
 				CF10B12228BC63D0006A42D3 /* Tests_macOSLaunchTests.swift in Sources */,
 				CFCF20B228CF9C28007427D0 /* WindComponent.swift in Sources */,
 				CF0DA60A28CB9CC30003A3D6 /* CloudComponent.swift in Sources */,
@@ -632,7 +638,7 @@
 				CFCF20A928CF9C0A007427D0 /* IsLoadingView.swift in Sources */,
 				CF2ABCC828D0F3EB00C5DC13 /* Data-model.swift in Sources */,
 				CFCF209D28CF917B007427D0 /* Proyecto01App.swift in Sources */,
-				CFCF20BA28CF9C31007427D0 /* HumidityComponet.swift in Sources */,
+				CFCF20BA28CF9C31007427D0 /* HumidityComponent.swift in Sources */,
 				CFCF20B028CF9C25007427D0 /* WeatherView.swift in Sources */,
 				CFCF20B728CF9C2E007427D0 /* TemperatureComponent.swift in Sources */,
 				CFCF20B328CF9C29007427D0 /* WindComponent.swift in Sources */,
@@ -775,8 +781,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconOne;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -784,6 +791,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Proyecto01--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Airport Weather";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -795,7 +804,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = modelado.Proyecto01;
+				PRODUCT_BUNDLE_IDENTIFIER = "modelado.Proyecto01-1";
 				PRODUCT_NAME = Proyecto01;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -809,8 +818,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconOne;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -818,6 +828,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Proyecto01--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Airport Weather";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -829,7 +841,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = modelado.Proyecto01;
+				PRODUCT_BUNDLE_IDENTIFIER = "modelado.Proyecto01-1";
 				PRODUCT_NAME = Proyecto01;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -843,8 +855,9 @@
 		CF10B12F28BC63D0006A42D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -856,6 +869,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Proyecto01--macOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Airport Weather";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -875,8 +889,9 @@
 		CF10B13028BC63D0006A42D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -888,6 +903,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Proyecto01--macOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Airport Weather";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+/// Starting view, from where the app is open. Makes an introduction.
 struct StartingView: View {
+
+    /// Body of the view.
     var body: some View {
         VStack{
             Text("Welcome")
@@ -23,6 +26,7 @@ struct StartingView: View {
     }
 }
 
+/// Preview of the ``StartingView``.
 struct StartingView_Previews: PreviewProvider {
     static var previews: some View {
         StartingView()

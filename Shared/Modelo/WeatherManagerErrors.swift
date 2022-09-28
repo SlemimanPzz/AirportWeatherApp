@@ -8,10 +8,21 @@
 import Foundation
 
 
+
+
+/// Exceptions that the ``WeatherManager`` can make.
 enum WeatherManagerException : Error{
+    
+    /// No API key in the ``WeatherManager``.
     case NoAPIkey
+    
+    /// Error Response from the API.
     case ErrorResponse(error : String)
+    
+    /// `IATA` code is not lenght  3.
     case InvalidIataLenght
+    
+    /// `ICAO`code is not lenght 4.
     case InvalidIcaoLenght
 }
 
