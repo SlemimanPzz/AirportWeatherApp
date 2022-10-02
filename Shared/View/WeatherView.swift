@@ -51,6 +51,7 @@ struct WeatherView: View {
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherView(weather: WeatherResponse(
+            results : 0,
             data: [
                 WeatherData(
                     barometer: Barometer(hg: 10.0, hpa: 20.0, kpa: 20.0, mb: 40.0),

@@ -16,51 +16,93 @@ class WeatherManager : ObservableObject {
     private var AirportWeatherCache : [String : (WeatherResponse, Date)] = [:]
      
     /// The API key that will be used to make requests.
-    var APIkey : String?
+    var api_key : String?
     
     ///  Published variable that informs of the last weather obtain.
-    @Published var lastWeather : WeatherResponse = WeatherResponse(data: [])
+    @Published var lastWeather : WeatherResponse = WeatherResponse(results: 0, data: [])
     
     /// Published variable that informs of the last response made from the API.
     @Published var lastResponse : URLResponse? = nil
     
     /// Published varibale that informs of, if any, last ``WeatherManagerException``  made by the ``WeatherManager``.
-    @Published var lastError : String? = nil
+    @Published var lastError : Error? = nil
     
     /// Published variable that informs if the ``WeatherManager`` is making any oparation.
     @Published var isLoading  = false
     
-    /// Published variable that informs if ``lastWeather`` was from ``AirportWeatherCache``.
+    /// Published variable that informs if ``lastWeather`` was from `AirportWeatherCache`.
     @Published var fromCache = false
     
-   
+    /// Private realm that will be the databe for the manager, especially to use in ``iataToIcao(iata:)``and other verifications.
+    private var realm : Realm?
+    
+    /// Initialazer that loads the database.
+    init() {
+        realm = loadDatabase()
+        
+        
+        if let saveKey = UserDefaults.standard.data(forKey: "SaveAPIkey"){
+            if let decoded = try? JSONDecoder().decode(String.self, from: saveKey){
+                self.api_key = decoded
+                return
+            }
+        }
+        
+        self.api_key = nil
+        
+    }
+    
+    /// Searches and 
+    /// - Returns: `nil` if the database wasn't found, a ``Realm``otherwise.
+    private func loadDatabase() -> Realm? {
+        let bundle = Bundle(for: WeatherManager.self)
+        let realmURL = bundle.url(forResource: "Data", withExtension: "realm")
+        
+        //let realmURL = Bundle.main.url(forResource: "Data", withExtension: "realm")
+        
+        guard let realmURL = realmURL else {
+            lastError = WeatherManagerException.DataBaseNotFound
+            return nil
+        }
+        
+        var realmConfig = Realm.Configuration()
+        realmConfig.seedFilePath = realmURL
+        realmConfig.readOnly = true
+        
+    
+        let realm = try! Realm(configuration: realmConfig)
+        
+        return realm
+        
+    }
+    
+    
+    func saveAPIkey(){
+        if let enconder = try? JSONEncoder().encode(api_key){
+            UserDefaults.standard.set(enconder, forKey: "SaveAPIkey")
+        }
+    }
     
     /// Transform IATA codes to ICAO codes. Also updates `lastError` if an error had happen.
     /// - Parameter iata: IATA code that will be transform
     /// - Returns: `ERROR` if an error happen, if not found retorn `ICAO not found`, or the equivalent ICAO code.
     func iataToIcao(iata : String) -> String {
-        if iata.count != 3 {
-            lastError = WeatherManagerException.InvalidIataLenght.localizedDescription
-        }
-        
-        
-        let realmURL = Bundle.main.url(forResource: "Data", withExtension: ".realm")
-        guard let realmURL = realmURL else {
-            lastError = "Data Base not found"
+        guard let realm = realm else {
+            lastError = WeatherManagerException.DataBaseNotFound
             return "ERROR"
         }
-        
-        let realm = try! Realm(fileURL: realmURL)
+        if iata.count != 3 {
+            lastError = WeatherManagerException.InvalidIataLenght
+        }
         
         let realmObs = realm.objects(IataIcaoCodes.self)
-        
         
         let response = realmObs.first {
             $0.IATA == iata
         }
         
         guard let response = response else {
-            lastError = "ICAO not found"
+            lastError = WeatherManagerException.ICAO_CodeNotFound
             return "ERROR"
         }
         
@@ -72,14 +114,11 @@ class WeatherManager : ObservableObject {
     /// - Parameter iata: The IATA code from the wish Airport.
     func getWeather(iata : String){
         if(iata.count != 3){
-            lastError = WeatherManagerException.InvalidIataLenght.localizedDescription
+            lastError = WeatherManagerException.InvalidIataLenght
             return
         }
         getWeather(icao: iataToIcao(iata: iata))
     }
-    
-    
-    
     
     
     /// Get the Weather from ICAO codes. Updates ``lastError`` and ``lastWeather``, dependeing of how the API response.
@@ -89,16 +128,17 @@ class WeatherManager : ObservableObject {
             return
         }
         if(icao.count != 4){
-            lastError = WeatherManagerException.InvalidIcaoLenght.localizedDescription
+            lastError = WeatherManagerException.InvalidIcaoLenght
             return
         }
+        
         if let cacheWeather = AirportWeatherCache[icao] {
             
             let minutesOfWeatherAntiquityThreshold = 10
             
             if cacheWeather.1.timeIntervalSinceNow < Double(-60 * minutesOfWeatherAntiquityThreshold) {
-                guard APIkey != nil else {
-                    lastError = WeatherManagerException.NoAPIkey.localizedDescription
+                guard api_key != nil else {
+                    lastError = WeatherManagerException.NoAPIkey
                     return
                 }
                 fetchWeather(icao: icao)
@@ -109,16 +149,13 @@ class WeatherManager : ObservableObject {
             lastWeather = cacheWeather.0
             return
         }
-        guard APIkey != nil else {
-            lastError = WeatherManagerException.NoAPIkey.localizedDescription
+        guard api_key != nil else {
+            lastError = WeatherManagerException.NoAPIkey
             return
         }
         fetchWeather(icao: icao)
         
     }
-    
-    
-    
     
     /// Fetches the weather from the API. Updates ``lastError`` and ``lastWeather`` depending of how the API responses.
     /// - Parameter icao: The ICAO weather from the wish Airport.
@@ -128,27 +165,20 @@ class WeatherManager : ObservableObject {
         fromCache = false
         
         
-        guard let APIkey = APIkey, APIkey != "" else {
-            lastError = WeatherManagerException.NoAPIkey.localizedDescription
+        guard let api_key = api_key, api_key != "" else {
+            lastError = WeatherManagerException.NoAPIkey
             isLoading = false
             return
         }
         
-        guard let url =  URL(string : "https://api.checkwx.com/metar/\(icao)/decoded/?x-api-key=\(APIkey)") else {
+        guard let url =  URL(string : "https://api.checkwx.com/metar/\(icao)/decoded/?x-api-key=\(api_key)") else {
             fatalError()
         }
         
         let task = URLSession.shared.dataTask(with: url){[unowned self] data, response, error in
             
-            guard case self.APIkey = APIkey else {
-                lastError = WeatherManagerException.NoAPIkey.localizedDescription
-                return
-            }
-            
-            
             DispatchQueue.main.async {
-                self.isLoading = false
-                self.lastWeather = WeatherResponse(data: [])
+                self.lastWeather = WeatherResponse(results: 0, data: [])
             }
             
             let decoder = JSONDecoder()
@@ -160,8 +190,9 @@ class WeatherManager : ObservableObject {
             guard let httpResponse = httpResponse, (200 ... 299).contains(httpResponse.statusCode) else {
                 DispatchQueue.main.async {
                     if error == nil{
-                        self.lastError = WeatherManagerException.ErrorResponse(error: httpResponse?.statusCode.description ?? "Not found").localizedDescription
+                        self.lastError = WeatherManagerException.ErrorResponse(error: httpResponse?.statusCode.description ?? "Not found")
                     }
+                    self.isLoading = false
                 }
                 return
             }
@@ -169,30 +200,37 @@ class WeatherManager : ObservableObject {
             
             
             if let data = data {
-                
                 do{
-                    let result = try decoder.decode(WeatherResponse.self, from: data)
+                    let resultado = try decoder.decode(WeatherResponse.self, from: data)
                     
                     DispatchQueue.main.async {
-                        self.lastWeather = result
+                        self.lastWeather = resultado
+                        guard self.lastWeather.results != 0 else {
+                            self.lastError = WeatherManagerException.ZeroResults
+                            self.isLoading = false
+                            return
+                        }
                         self.AirportWeatherCache[icao] = (self.lastWeather, Date())
                     }
                     
                     
                 } catch DecodingError.dataCorrupted(_){
                     DispatchQueue.main.async {
-                        self.lastError = error?.localizedDescription
+                        self.lastError = error
                     }
                 }
                 catch{
                     DispatchQueue.main.async {
-                        self.lastError = error.localizedDescription
+                        self.lastError = error
                     }
                 }
             }
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
         }
         
-        if lastError == nil{
+        if lastError == nil {
             task.resume()
         }
         

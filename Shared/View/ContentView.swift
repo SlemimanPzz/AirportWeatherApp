@@ -32,10 +32,13 @@ struct ContentView: View {
     @State var APIkeyField = ""
     
     /// API key that will be pass to ``weatherManager``
-    @State var APIkey = ""
+    @State var API_key = ""
     
     /// The type of code the request will be made.
     @State var codePick = CodePicker.ICAO
+    
+    
+    @State var saveAPIkeyAlert = false
     
     /// Body of the view.
     var body: some View {
@@ -52,6 +55,9 @@ struct ContentView: View {
             
             
             VStack {
+                ScrollView{
+                    
+                
                 Text("Airport Weather")
                     .font(.largeTitle)
                     .multilineTextAlignment(.center)
@@ -93,20 +99,24 @@ struct ContentView: View {
                 
                 HStack{
                     Button{
-                        APIkey = APIkeyField
-                        APIkeyField = ""
-                        weatherManager.APIkey = APIkey
+                        saveAPIkeuUI()
                     } label: {
                         Text("Save API key")
+                    }
+                    .onSubmit {
+                        saveAPIkeuUI()
+                    }
+                    .alert("Your API key(\(API_key)) has been saved.", isPresented: $saveAPIkeyAlert) {
+                        Button("OK", role: .cancel) {}
                     }
                     .padding()
                     
                     Button {
-                        weatherManager.APIkey = APIkey
+                        weatherManager.api_key = API_key
                         if(codePick == CodePicker.ICAO){
-                            weatherManager.getWeather(icao: requestCode.description.capitalized)
+                            weatherManager.getWeather(icao: requestCode.description.uppercased())
                         } else {
-                            weatherManager.getWeather(iata: requestCode.description.capitalized)
+                            weatherManager.getWeather(iata: requestCode.description.uppercased())
                         }
                         
                     } label: {
@@ -114,9 +124,24 @@ struct ContentView: View {
                     }
                     .padding()
                 }
+            
+                }
             }
         }
     }
+    
+    
+    /// Save the API for the manager and the UI
+    func saveAPIkeuUI(){
+        API_key = APIkeyField
+        APIkeyField = ""
+        weatherManager.api_key = API_key
+        weatherManager.saveAPIkey()
+        saveAPIkeyAlert = true
+    }
+    
+    
+    
 }
 
 

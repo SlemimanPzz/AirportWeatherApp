@@ -11,7 +11,7 @@ class IataIcaoCodes: Object {
     @objc dynamic var City: String? = nil
     
     /// Country of the Airport.
-    @objc dynamic var country: String? = nil
+    @objc dynamic var Country: String? = nil
     
     /// `IATA` code of the Airport.
     @objc dynamic var IATA: String? = nil

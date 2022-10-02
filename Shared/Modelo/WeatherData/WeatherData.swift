@@ -13,6 +13,9 @@ import Foundation
 /// Weather response from the API.
 struct WeatherResponse : Decodable {
     
+    /// Number of result.
+    let results : UInt
+    
     /// Array of ``WeatherData``. It can be mutiple because it can be more that 1 station.
     let data : [WeatherData]
 }

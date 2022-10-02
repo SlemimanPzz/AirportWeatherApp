@@ -16,9 +16,14 @@ class Proyecto01Tests: XCTestCase {
     
     
     override func setUp(){
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         weatherManager = WeatherManager()
         super.setUp()
+    }
+    
+    
+    override func tearDown() {
+        weatherManager = nil
+        super.tearDown()
     }
     
     func testGetWeatherIata(){
@@ -53,6 +58,10 @@ class Proyecto01Tests: XCTestCase {
     
     
     func testIataToIcao() {
+        guard weatherManager.lastError?.localizedDescription != "The Data Base wasn't found." else {
+            XCTFail("Data Base not Found")
+            return
+        }
         XCTAssert(weatherManager.iataToIcao(iata: "MEX") == "MMMX")
         XCTAssert(weatherManager.iataToIcao(iata: "MTY") == "MMMY")
         XCTAssert(weatherManager.iataToIcao(iata: "LHR") == "EGLL")
