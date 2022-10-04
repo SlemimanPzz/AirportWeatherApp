@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF00406628EBD819009549FD /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = CF00406528EBD819009549FD /* Realm */; };
+		CF00406828EBD819009549FD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF00406728EBD819009549FD /* RealmSwift */; };
 		CF0DA5FE28CB926F0003A3D6 /* WindComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FD28CB926F0003A3D6 /* WindComponent.swift */; };
 		CF0DA60028CB93440003A3D6 /* TemperatureComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA5FF28CB93440003A3D6 /* TemperatureComponent.swift */; };
 		CF0DA60228CB93EF0003A3D6 /* HumidityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DA60128CB93EF0003A3D6 /* HumidityComponent.swift */; };
@@ -232,6 +234,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF00406828EBD819009549FD /* RealmSwift in Frameworks */,
+				CF00406628EBD819009549FD /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +466,10 @@
 				CF10B11128BC63D0006A42D3 /* PBXTargetDependency */,
 			);
 			name = "Tests iOS";
+			packageProductDependencies = (
+				CF00406528EBD819009549FD /* Realm */,
+				CF00406728EBD819009549FD /* RealmSwift */,
+			);
 			productName = "Tests iOS";
 			productReference = CF10B10F28BC63D0006A42D3 /* Tests iOS.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -1242,6 +1250,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF00406528EBD819009549FD /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF194E4328CFC33B002FA2FE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		CF00406728EBD819009549FD /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF194E4328CFC33B002FA2FE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		CF194E4428CFC33B002FA2FE /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF194E4328CFC33B002FA2FE /* XCRemoteSwiftPackageReference "realm-swift" */;

@@ -25,15 +25,15 @@ en la sección \ref{subsec:API} de Arsenal, funciona con ICAO, no IATA, por lo q
     \caption{Tranforma de IATA a ICAO}\label{alg:IATA_TO_IACO}
     \begin{algorithmic}
         \Require Codigo IATA
-        \State Transformar de IATA a ICAO \Comment{Aun no esta implementado}\\
-        \Return Codigo ICAO
+        \State Primera concidencia de la base de datos del codigo IATA
+        \Return Codigo ICAO de la coincidencia de la base de datos.
     \end{algorithmic}
 \end{algorithm}
 
 Despues de conseguir el codigo ICAO, ya sea directamente del usuario o por medio del algoritmo \ref{alg:IATA_TO_IACO},
 seguira segura hacer la consulta del clima, para esto se tendra la cache como un diccionario con llaves de tipo \texttt{String},
-las cuales seran el codigo ICAO, y valor \texttt{Información del Clima}. Pero para esto defincamos primero como guardaremos la informacion. 
-Sera en una estructura la cual guardara la los siguientes datos:
+las cuales seran el codigo ICAO, y valores  [\texttt{Información del Clima}] y \texttt{Date} para la cache. Pero para esto definamos primero como guardaremos la informacion. 
+Sera en un arreglo,y las estructuras del arreglo sera de la siguiente manera:
 
 \textbf{Información del Clima}
 \begin{itemize}
