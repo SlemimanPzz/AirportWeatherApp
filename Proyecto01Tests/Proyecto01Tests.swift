@@ -17,42 +17,55 @@ class Proyecto01Tests: XCTestCase {
     
     override func setUp(){
         weatherManager = WeatherManager()
+        weatherManager.api_key = "" // Please put your API key here, otherwise the test will fail.
         super.setUp()
     }
     
-    
-    override func tearDown() {
-        weatherManager = nil
-        super.tearDown()
-    }
-    
     func testGetWeatherIata(){
-        weatherManager.getWeather(iata: "MEX")
-        XCTAssert(weatherManager.lastError != nil)
-        guard weatherManager.lastWeather.data.count >= 1 else {
-            XCTAssert(false)
-            return
+        guard weatherManager.api_key != "", weatherManager.api_key != nil else {
+                XCTFail("No API key")
+                return
         }
-        XCTAssert(weatherManager.lastWeather.data[0].icao == "MMMX")
+        
+        weatherManager.getWeather(iata: "MEX")
+        let expectation = self.expectation(description: "Wait response")
+        
+        DispatchQueue.global().async {
+            while(true){
+                if(self.weatherManager.lastWeather.results != 0){
+                    expectation.fulfill()
+                    break
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 20)
+        
+        XCTAssert(weatherManager.lastWeather.data[0].icao == "MMMX", "Incorrect response")
     }
     
     
     func testGetWeatherIcao() {
 
+        guard weatherManager.api_key != "", weatherManager.api_key != nil else {
+                XCTFail("No API key")
+                return
+        }
+        
+        let expectation = self.expectation(description: "Response")
         weatherManager.getWeather(icao: "MMMX")
-        XCTAssert(weatherManager.lastError != nil)
-        let exp = expectation(description: "Test after 5 seconds")
-        let result = XCTWaiter.wait(for: [exp], timeout: 5.0)
-        if result == XCTWaiter.Result.timedOut {
-            XCTAssert(weatherManager.lastWeather.data.count > 0)
-        } else {
-            XCTFail("Delay interrupted")
+        
+        DispatchQueue.global().async {
+            while(true){
+                if(self.weatherManager.lastWeather.results != 0){
+                    expectation.fulfill()
+                    break
+                }
+            }
         }
-        guard weatherManager.lastWeather.data.count > 0 else {
-            XCTFail()
-            return
-        }
-        XCTAssert(weatherManager.lastWeather.data[0].icao == "MMMX")
+        
+        waitForExpectations(timeout: 20)
+        XCTAssert(self.weatherManager.lastWeather.data[0].icao == "MMMX", "Incorrect response")
         
     }
     
