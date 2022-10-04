@@ -1,17 +1,52 @@
-# Proyecto01 Modelado y Programación : Clima de Aeropuerto
+# Proyecto01 Modelado y Programación : Airport Weather
 
-## Ricardo Emiliano Apodaca Cardiel
+## Ricardo Emiliano Apodaca Cardiel 
+### 0422029544
 
-Este proyecto consiste en una applicacion para consultar el clima con codigos IATA y ICAO. Esta hecha en [Swift](https://www.swift.org), con una interfaz de
-hecha con [Swift UI](https://developer.apple.com/xcode/swiftui/), hecha para sistemas operativos de Apple, como iOS, macOS, iPad OS.
+### Intro
 
-Para la ejecucion y cosntruccion del mismo es necesario utilizar Xcode, por lo que solo es posible en macOS, debido a que la app esta contruida para correr en los sistemas operativos de Apple . Ademas se incluyen las dependecias de [Realm](https://realm.io) y el correspondiente [Swift SDK](https://www.mongodb.com/docs/realm/sdk/swift/#realm-swift-sdk), por lo que sin este no es posible la ejecucion del proyecto. La base de datos es utilizada para tener regristro de los Codigos y poder hacer la transformacion  de IATA a ICAO.
+This project is made to show airport weather using either [`IATA`](https://en.wikipedia.org/wiki/IATA_airport_code) or [`ICAO`](https://en.wikipedia.org/wiki/ICAO_airport_code). It is made on [Swift](https://www.swift.org)
+and the UI in [Swift UI](https://developer.apple.com/xcode/swiftui/)
+for Apple oparating systems, like iOS, macOS, and iPadOS.
+
+### For execution
+
+For the build and execution it is recomended to use Xcode, but for sure a mac is needed. Also you need to add the [Realm](https://realm.io) y it's 
+[Swift SDK](https://www.mongodb.com/docs/realm/sdk/swift/#realm-swift-sdk),
+since they are at the core of this project for find the equivalent `ICAO` code from a `IATA` code. Also a [CheckWX](https://www.checkwxapi.com) API key is needed to make use of the app.
+
+### Use the app
+
+1. Insert your API key in the field below and click `Save API key`.
+2. Select which type of code your are to make a request. The default and faster is `ICAO`
+3. Put your code on the field and wait for result, you need an internet connection.
+4. Click on `Get Weather` and wait for result.
+### App Feature
+
+- Make request with `IATA`or `ICAO` codes.
+
+- Altough a API key is needed, the app save your key beetween reopening and
+restarting the device.
+
+### App Demostration
 
 
+https://user-images.githubusercontent.com/88603184/193735387-e47943a8-ce73-4f9f-a5f4-4f610553b76c.mp4
+
+
+### Test Succeeded
+
+![Test Succeeded](ReadmeResources/TestSucceeded.png)
+
+### Extras
+
+- To add the packages : [MongoDB Explanation](https://www.mongodb.com/docs/realm/sdk/swift/install/)
+
+- For building documentation: `Product > Build Documentation`
+
+### Explanation PDF (in spanish)
+
+The PDF explains a bit of the thought process, [here](Info/LaTeX/main.pdf) the link.
 ### Problemas Conocidos
 
-- Mala interfaz en iPad.
-
 - No corre correctament nativamente en macOS, si cuando se usa la contruccion de iPad.
-
-- No todos los errores manejados, para gran parte de lso casos corre correctamente.

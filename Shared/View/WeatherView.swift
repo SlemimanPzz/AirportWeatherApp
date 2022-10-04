@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+/// General Weather View that shows the first ``WeatherData`` from ``WeatherResponse``. Uses ``TemperatureComponent``, ``WindComponent``,
+/// ``CloudComponent``, and ``HumidityComponent``.
 struct WeatherView: View {
+    
+    /// ``WeatherResponse`` used to construct the view.
     var weather : WeatherResponse
-    //To be remove, just for debbing
     
-    var fromCache : Bool
-    
+    /// Body of the view.
     var body: some View {
         if(weather.data.count != 0){
             VStack {
@@ -20,8 +22,6 @@ struct WeatherView: View {
                 Text("Weather in  \(weather.data[0].station.name)")
                     .multilineTextAlignment(.center)
                     .padding()
-                Text("From chache: \(fromCache.description)")
-                
                 HStack{
                     Spacer()
                     VStack(alignment: .leading){
@@ -29,7 +29,7 @@ struct WeatherView: View {
                     }
                     Spacer()
                     VStack(alignment: .trailing){
-                        HumidityComponet(humidity: weather.data[0].humidity)
+                        HumidityComponent(humidity: weather.data[0].humidity)
                     }
                     Spacer()
                 }
@@ -47,10 +47,11 @@ struct WeatherView: View {
 
 
 
-
+/// Preview of ``WeatherView``.
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherView(weather: WeatherResponse(
+            results : 0,
             data: [
                 WeatherData(
                     barometer: Barometer(hg: 10.0, hpa: 20.0, kpa: 20.0, mb: 40.0),
@@ -63,6 +64,6 @@ struct WeatherView_Previews: PreviewProvider {
                     station: Station(name: "Prueba")
                 )
             ]
-        ), fromCache: true)
+        ))
     }
 }

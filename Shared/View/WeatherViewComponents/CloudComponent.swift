@@ -7,12 +7,13 @@
 
 import SwiftUI
 
+/// View that displays the clouds, needs a ``Clouds`` array, else says that it could get them.
 struct CloudComponent: View {
+    
+    /// Clouds of the view.
     let clouds : [Clouds]?
     
-    
-    
-    
+    /// Body of the view.
     var body: some View {
         if let clouds = clouds {
             VStack(alignment : .center){
@@ -30,6 +31,8 @@ struct CloudComponent: View {
     }
 }
 
+
+/// Preview of  ``WindComponent``.
 struct CloudComponent_Previews: PreviewProvider {
     static var previews: some View {
         CloudComponent(clouds: [Clouds(code: "CLR", text: "Clear")])
