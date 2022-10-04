@@ -16,7 +16,7 @@ class Proyecto01Tests: XCTestCase {
     
     override func setUp(){
         weatherManager = WeatherManager()
-        weatherManager.api_key = "dd12071c43534b23a8adc8b69e" // Please put your API key here, otherwise the test will fail.
+        weatherManager.api_key = "dd12071c43534b23a8adc8b69e" // Please put your API key here, otherwise the test will fail. This is an example.
         super.setUp()
     }
     
