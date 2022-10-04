@@ -19,7 +19,7 @@ struct StartingView: View {
                 .multilineTextAlignment(.center)
                 .padding()
             Spacer()
-            Text("Down here insert your API key, then click Save API key of CheckWX, then you can get the Weather")
+            Text("Down here insert your API key, then click Save API key of CheckWX, then you can get the Weather. If you already save a key before, there is no need insert a new one.")
                 .multilineTextAlignment(.center)
                 .padding()
         }

@@ -16,7 +16,7 @@ class WeatherManager : ObservableObject {
     private var AirportWeatherCache : [String : (WeatherResponse, Date)] = [:]
      
     /// The API key that will be used to make requests.
-    var api_key : String?
+    @Published var api_key : String?
     
     ///  Published variable that informs of the last weather obtain.
     @Published var lastWeather : WeatherResponse = WeatherResponse(results: 0, data: [])
@@ -77,6 +77,7 @@ class WeatherManager : ObservableObject {
     }
     
     
+    //Save the
     func saveAPIkey(){
         if let enconder = try? JSONEncoder().encode(api_key){
             UserDefaults.standard.set(enconder, forKey: "SaveAPIkey")

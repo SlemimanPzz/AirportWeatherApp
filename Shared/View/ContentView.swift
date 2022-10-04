@@ -37,8 +37,11 @@ struct ContentView: View {
     /// The type of code the request will be made.
     @State var codePick = CodePicker.ICAO
     
-    
+    /// Shows the alert.
     @State var saveAPIkeyAlert = false
+    
+    
+    
     
     /// Body of the view.
     var body: some View {
@@ -53,10 +56,8 @@ struct ContentView: View {
                 }
             }
             
-            
             VStack {
                 ScrollView{
-                    
                 
                 Text("Airport Weather")
                     .font(.largeTitle)
@@ -81,7 +82,7 @@ struct ContentView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.trailing)
                 }
-                
+               
                 if weatherManager.isLoading {
                     IsLoadingView()
                 } else if weatherManager.lastError != nil {
@@ -89,7 +90,7 @@ struct ContentView: View {
                 } else {
                     WeatherView(weather: weatherManager.lastWeather)
                 }
-                
+                                
                 Spacer()
                 
                 TextField("Insert your API key", text: $APIkeyField, prompt: Text("API key"))
@@ -106,13 +107,12 @@ struct ContentView: View {
                     .onSubmit {
                         saveAPIkeuUI()
                     }
-                    .alert("Your API key(\(API_key)) has been saved.", isPresented: $saveAPIkeyAlert) {
+                    .alert("Your API key(\(API_key)) has been saved. The next time you open the app you would not need ", isPresented: $saveAPIkeyAlert) {
                         Button("OK", role: .cancel) {}
                     }
                     .padding()
                     
                     Button {
-                        weatherManager.api_key = API_key
                         if(codePick == CodePicker.ICAO){
                             weatherManager.getWeather(icao: requestCode.description.uppercased())
                         } else {
@@ -148,6 +148,6 @@ struct ContentView: View {
 /// Preview of ``ContentView``
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(weatherManager: WeatherManager())
+        ContentView()
     }
 }

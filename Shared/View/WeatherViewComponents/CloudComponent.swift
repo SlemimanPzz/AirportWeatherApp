@@ -13,9 +13,6 @@ struct CloudComponent: View {
     /// Clouds of the view.
     let clouds : [Clouds]?
     
-    
-    
-    
     /// Body of the view.
     var body: some View {
         if let clouds = clouds {

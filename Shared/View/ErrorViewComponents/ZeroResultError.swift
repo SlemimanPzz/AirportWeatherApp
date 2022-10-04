@@ -11,6 +11,6 @@ import SwiftUI
 struct ZeroResultError : View {
     var body: some View {
         Text("The API was not able to return a result.")
-        Text("Please try other code")
+        Text("Please try other airport.")
     }
 }
