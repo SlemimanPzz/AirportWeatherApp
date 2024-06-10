@@ -1,8 +1,5 @@
 # Proyecto01 Modelado y Programación : Airport Weather
 
-## Ricardo Emiliano Apodaca Cardiel 
-### 0422029544
-
 ### Intro
 
 This project is made to show airport weather using either [`IATA`](https://en.wikipedia.org/wiki/IATA_airport_code) or [`ICAO`](https://en.wikipedia.org/wiki/ICAO_airport_code). It is made on [Swift](https://www.swift.org)
