@@ -1,4 +1,4 @@
-# Proyecto01 Modelado y Programación : Airport Weather
+# Airport Weather
 
 ### Intro
 
@@ -29,11 +29,6 @@ restarting the device.
 
 
 https://user-images.githubusercontent.com/88603184/193735387-e47943a8-ce73-4f9f-a5f4-4f610553b76c.mp4
-
-
-### Test Succeeded
-
-![Test Succeeded](ReadmeResources/TestSucceeded.png)
 
 ### Extras
 
